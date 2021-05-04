@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Lecture</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div class="nav-bar"></div>
+
+    <div id="app">
+        <div class="product">
+
+            <div class="product-image"> 
+                <img v-bind:src="image">
+            </div>
+
+            <div class="product-info">
+                <h1>{{ title }}</h1>
+                <p>{{description}}</p>
+                <p v-if="inStock">In Stock</p>
+                <p v-else>Out of Stock</p>
+
+                <ul>
+                    <li v-for="detail in details">{{detail}}</li>
+                </ul>
+
+                <div v-for="(variant, index) in variants" 
+                        :key="variant.variantID"
+                        class="color-box"
+                        :style="{backgroundColor: variant.variantColor}"
+                        @mouseover="updateProduct(index)"
+                        >
+                </div>
+
+                <button 
+                        v-on:click="addToCart"
+                        v-bind:disabled="!inStock"
+                        v-bind:class="{disabledButton: !inStock}">카트에 추가!</button>
+                <button 
+                        v-on:click="delToCart"
+                        v-bind:disabled="!inStock"
+                        v-bind:class="{disabledButton: !inStock}">카트에서 제거!</button>
+
+                <div class="cart">
+                    <p style="height:max-content;">장바구니({{cart}})</p>
+                </div>
+                <div>
+                    <button id="link" type="button" v-on:click="onClickLink()">우리는 여기서 떼다 팔아!</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

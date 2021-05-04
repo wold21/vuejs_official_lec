@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세상편하다</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app" :style="style">
+        <h1>Hello, {{ name }}</h1>
+        <input type="text" v-model="name"/>
+    </div>
+    <div id="zzal" :style="style">
+        <h3><input type="checkbox" v-model="comfortable"> 편안하게 만들어주자.</h3>
+        <img v-bind:src="comfortable ? after : before">
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./world.js"></script>
+</body>
+</html>
